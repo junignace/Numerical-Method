@@ -1,0 +1,33 @@
+function [x,n] = gauss_seidel(A,b,epsilon)
+format long
+x1(1) = 0;
+x2(1) = 0;
+x3(1) = 0;
+for n = 1:100
+    
+    x1(n+1) = (1/A(1)) * ( b(1) + (-1)*( A(4))*x2(n) + (-1)*(A(7))*x3(n));
+    x2(n+1) = (1/A(5)) * ( b(2) + (-1)*( A(2))*x1(n+1) + (-1)*(A(8))*x3(n));
+    x3(n+1) = (1/A(9)) * ( b(3) + (-1)*( A(3))*x1(n+1) + (-1)*(A(6))*x2(n+1));
+
+    diff1(n+1) = abs(x1(n) - x1(n+1));
+    diff2(n+1) = abs(x2(n) - x2(n+1));
+    diff3(n+1) = abs(x3(n) - x3(n+1));
+    
+    if diff1(n)&diff2(n)&diff3(n) < epsilon
+        break;
+    else
+        continue;
+   
+    
+    end
+    
+end
+
+x1
+x2
+x3
+diff1
+diff2
+diff3
+n
+end
